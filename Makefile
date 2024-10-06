@@ -1,5 +1,5 @@
 # Release new version
-GIT_BRANCH=dev
+GIT_BRANCH=main
 
 GIT_VERSION=$(shell git tag --list | sort -V | tail -n 1)
 GIT_NEXT_PATCH=$(shell echo $(GIT_VERSION) | awk -F. '{print $$1"."$$2"."$$3+1}')

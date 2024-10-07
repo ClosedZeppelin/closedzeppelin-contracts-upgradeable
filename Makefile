@@ -27,3 +27,7 @@ major:
 # Release current version
 release: 
 	@make push version=${GIT_CURRENT_VERSION}
+
+# Calculate locations
+location:
+	@forge script script/StorageLocation.s.sol:StorageLocation --sig "run()" -vvv

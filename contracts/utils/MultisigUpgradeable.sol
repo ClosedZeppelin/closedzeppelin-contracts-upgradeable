@@ -1,27 +1,30 @@
 // SPDX-License-Identifier: MIT
-// ClosedZeppelin Contracts v1.0.1 (utils/MultisigUpgradeable.sol)
+// ClosedZeppelin Contracts (utils/MultisigUpgradeable.sol)
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "openzeppelin-contracts/contracts/utils/Address.sol";
-import "openzeppelin-contracts/contracts/utils/Context.sol";
 import "openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol";
+import "openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol";
 import "openzeppelin-contracts-upgradeable/contracts/utils/NoncesUpgradeable.sol";
 import "openzeppelin-contracts-upgradeable/contracts/utils/ReentrancyGuardUpgradeable.sol";
 import "openzeppelin-contracts-upgradeable/contracts/utils/cryptography/EIP712Upgradeable.sol";
 
-abstract contract Multisig is
-    Context,
+abstract contract MultisigUpgradeable is
+    ContextUpgradeable,
     EIP712Upgradeable,
     NoncesUpgradeable,
     ReentrancyGuardUpgradeable
 {
-    bytes32 private immutable _EXECUTION_TYPEHASH =
+    bytes32 internal immutable _EXECUTION_TYPEHASH =
         keccak256(
             "Execute(bytes32 call,address sender,uint256 nonce,uint256 deadline)"
         );
 
-    // Signers accessibility to allow contracts called by using multisig to perform data checks
+    /**
+     * @dev Signers accessibility to allow contracts called by using multisig to perform data checks
+     *      The data is cleaned after the execution to prevent reentrancy and to receive gas refunds
+     */
     address[] private _signers;
 
     /**
@@ -47,7 +50,9 @@ abstract contract Multisig is
      * @dev Constructor function that sets up the EIP712 version.
      * @param name The name of the contract.
      */
-    function __Multisig_init(string memory name) internal onlyInitializing {
+    function __MultisigUpgradeable_init(
+        string memory name
+    ) internal onlyInitializing {
         __EIP712_init(name, "1");
     }
 

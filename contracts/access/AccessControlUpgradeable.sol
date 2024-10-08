@@ -4,10 +4,10 @@
 pragma solidity ^0.8.20;
 
 import {IAccessControl} from "closedzeppelin-contracts/access/IAccessControl.sol";
-import {Context} from "openzeppelin-contracts/contracts/utils/Context.sol";
+import {ContextUpgradeable} from "openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.sol";
 
-contract AccessControlUpgradeable is Context, IAccessControl {
-    bytes32 public constant DEFAULT_ADMIN_ROLE = 0x00;
+contract AccessControlUpgradeable is ContextUpgradeable, IAccessControl {
+    uint64 public constant DEFAULT_ADMIN_ROLE = 0x01;
 
     /// @custom:storage-location erc7201:closedzeppelin.storage.AccessControl
     struct AccessControlStorage {

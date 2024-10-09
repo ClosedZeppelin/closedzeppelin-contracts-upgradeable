@@ -5,7 +5,7 @@ import "../../contracts/utils/MultisigUpgradeable.sol";
 
 contract MultisigUpgradeableMock is MultisigUpgradeable {
     function __MultisigUpgradeableMock_init() external initializer {
-        __MultisigUpgradeable_init("MultisigUpgradeableMock");
+        __Multisig_init("MultisigUpgradeableMock");
     }
 
     function checkSigners(

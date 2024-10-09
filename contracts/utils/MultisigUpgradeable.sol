@@ -50,7 +50,7 @@ abstract contract MultisigUpgradeable is
      * @dev Constructor function that sets up the EIP712 version.
      * @param name The name of the contract.
      */
-    function __MultisigUpgradeable_init(
+    function __Multisig_init(
         string memory name
     ) internal onlyInitializing {
         __EIP712_init(name, "1");

@@ -9,12 +9,14 @@ import "openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.so
 import "openzeppelin-contracts-upgradeable/contracts/utils/NoncesUpgradeable.sol";
 import "openzeppelin-contracts-upgradeable/contracts/utils/ReentrancyGuardUpgradeable.sol";
 import "openzeppelin-contracts-upgradeable/contracts/utils/cryptography/EIP712Upgradeable.sol";
+import "closedzeppelin-contracts/utils/IMultisig.sol";
 
 abstract contract MultisigUpgradeable is
     ContextUpgradeable,
     EIP712Upgradeable,
     NoncesUpgradeable,
-    ReentrancyGuardUpgradeable
+    ReentrancyGuardUpgradeable,
+    IMultisig
 {
     bytes32 internal immutable _EXECUTION_TYPEHASH =
         keccak256(

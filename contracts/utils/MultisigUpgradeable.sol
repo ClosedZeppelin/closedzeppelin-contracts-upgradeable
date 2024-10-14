@@ -9,14 +9,12 @@ import "openzeppelin-contracts-upgradeable/contracts/utils/ContextUpgradeable.so
 import "openzeppelin-contracts-upgradeable/contracts/utils/NoncesUpgradeable.sol";
 import "openzeppelin-contracts-upgradeable/contracts/utils/ReentrancyGuardUpgradeable.sol";
 import "openzeppelin-contracts-upgradeable/contracts/utils/cryptography/EIP712Upgradeable.sol";
-import "closedzeppelin-contracts/utils/IMultisig.sol";
 
 abstract contract MultisigUpgradeable is
     ContextUpgradeable,
     EIP712Upgradeable,
     NoncesUpgradeable,
-    ReentrancyGuardUpgradeable,
-    IMultisig
+    ReentrancyGuardUpgradeable
 {
     bytes32 internal immutable _EXECUTION_TYPEHASH =
         keccak256(
@@ -52,9 +50,7 @@ abstract contract MultisigUpgradeable is
      * @dev Constructor function that sets up the EIP712 version.
      * @param name The name of the contract.
      */
-    function __Multisig_init(
-        string memory name
-    ) internal onlyInitializing {
+    function __Multisig_init(string memory name) internal onlyInitializing {
         __EIP712_init(name, "1");
     }
 
